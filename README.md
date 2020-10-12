@@ -1,6 +1,6 @@
 # Pytorch Pneumonia localization
 
-[![Open In Colab](https://colab.research.google.com/drive/1GrPVEx9jKmnbrqrtnn2SrMiGC0iRMx66?usp=sharing)
+![Open In Colab](https://colab.research.google.com/drive/1GrPVEx9jKmnbrqrtnn2SrMiGC0iRMx66?usp=sharing)
 
 
  Not long ago, the machine learning group at Stanford University led by Adjunct Professor Andrew Ng released a paper on their computer vision algorithm which can detect and localize pneumonia from x-ray chest scans. Their algorithm outperformed the average practising radiologist at Stanford.Their algorithm achieved an accuracy of about 94%. Their project really inspired me so I decided to try it out. 
