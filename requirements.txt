@@ -1,0 +1,10 @@
++ Pytorch 
++ Torchvision
++ Numpy
++ Matplotlib
++ copy
++ time
++ PIL 
++ scipy
+
+You can visit Pytorch.org for instructions on how to install pytorch
