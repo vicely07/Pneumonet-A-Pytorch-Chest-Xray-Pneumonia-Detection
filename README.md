@@ -1,4 +1,4 @@
-# Creating AI product from scratch with Pytorch 
+# Building an AI COVID-19 Product from Scratch with Pytorch 
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1H8SbSmrI3jjGL_8lWy1fPSeHsuL_Lp60)
 
