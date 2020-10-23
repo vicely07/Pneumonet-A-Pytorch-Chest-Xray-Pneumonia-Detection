@@ -9,7 +9,7 @@ _Fig 4: Chart of wait-time reduction of AI radiology tool (data from a simulatio
 
 A survey by the University of Michigan shows that patients usually expect the result came back after 2-3 days a chest X-ray test for pneumonia. (Crist, 2017) However, the average wait time for the patients is 11 days (2 weeks). This long delay happens because radiologists usually need at least 20 minutes to review the X-ray while the number of images keeps stacking up after each operation day of the clinic. New research has found that an artificial intelligence (AI) radiology platform such as our CovidScan.ai can dramatically reduce the patient’s wait time significantly, cutting the average delay from 11 days to less than 3 days for abnormal radiographs with critical findings. (Mauro et al., 2019) With this wait-tine reduction, patients I critical cases will receive their results faster, and receive appropriate care sooner. In this blog post, we’ll build a machine learning pipeline to classify whether a patient has Pneumonia or not from chest x-ray images and then draw a heat-map  on areas that the model used to make these decisions. Below is a quick overview of the entire project.
 
-'''
+```
 #Using the transforms module in the torchvision module, we define a set of functions that perform data augmentation on our dataset to obtain more data.#
 transformers = {'train_transforms' : transforms.Compose([
     transforms.Resize((224,224)),
@@ -34,4 +34,4 @@ transformers = {'train_transforms' : transforms.Compose([
 trans = ['train_transforms','valid_transforms','test_transforms']
 path = "/content/gdrive/My Drive/chest_xray/"
 categories = ['train','val','test']
-'''
+```
