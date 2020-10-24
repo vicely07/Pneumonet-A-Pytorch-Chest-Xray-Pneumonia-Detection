@@ -19,7 +19,7 @@ _Fig 2: Chart of wait-time reduction of AI radiology tool (data from a simulatio
 
 In this tutorial, we’ll show you how to use Pytorch to build a machine learning web application to classify whether a patient has COVID-19, Pneumonia or no sign of any infection (normal) from chest x-ray images. We will focus on the Pytorch component of the AI application. 
 
-Below are the 4 main step we’ll go over in the tutorial:
+**Below are the 4 main step we’ll go over in the tutorial:**
 
 1.	Collecting Dataset
 
