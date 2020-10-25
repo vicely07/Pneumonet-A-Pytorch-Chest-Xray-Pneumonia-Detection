@@ -37,8 +37,9 @@ In this tutorial, we’ll show you how to use Pytorch to build a machine learnin
 
 [4. Developing the Web-app (30 minutes)](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection#4-developing-the-web-app)
 
-[5. Summary & Additional Resorces (1 minute)](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection#5-summary)
+[5. Summary & Additional Resorces (5 minutes)](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection#5-summary)
 
+[References]()
 
 
 ## 1.	Collecting the Data (2 minutes):
