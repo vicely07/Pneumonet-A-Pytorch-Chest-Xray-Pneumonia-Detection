@@ -6,20 +6,20 @@
 
 ## Background:
 
-In screening for Covid-19, patients can first be screened for flu-like symptoms using nasal swap to confirm their COVID-19 status. After 14 days of quarantine for confirmed cases, the hospital draws the patient’s blood and takes the patient’s chest X-ray. Chest X-ray is a golden standard for physicians and radiologists to check for the infection caused by the virus. An x-ray imaging will allow your doctor to see your lungs, heart and blood vessels to help determine if you have pneumonia. When interpreting the x-ray, the radiologist will look for white spots in the lungs (called infiltrates) that identify an infection. This exam, together with other vital signs such as temperature, or flu-like symptoms, will also help doctors determine whether a patient is infected with COVID-19 or other pneumonia-related diseases. The standard procedure of pneumonia diagnosis involves a radiologist reviewing chest x-ray images and send the result report to a patient’s primary care physician (PCP), who then will discuss the results with the patient.
+In screening for COVID-19, patients can first be screened for flu-like symptoms using nasal swap to confirm their status. After 14 days of quarantine for confirmed cases, the hospital draws the patient’s blood and takes the patient’s chest X-ray. Chest X-ray is a golden standard for physicians and radiologists to check for the infection caused by the virus. An x-ray imaging will allow your doctor to see your lungs, heart and blood vessels to help determine if you have Pneumonia. When interpreting the x-ray, the radiologist will look for white spots in the lungs (called infiltrates) that identify an infection. This exam, together with other vital signs such as temperature, or flu-like symptoms, will also help doctors determine whether a patient is infected with Pneumonia or other Pneumonia-related diseases. The standard procedure of Pneumonia diagnosis involves a radiologist reviewing chest x-ray images and send the result report to a patient’s primary care physician (PCP), who then will discuss the results with the patient.
 
  ![Alt text](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection/blob/main/Images/Fig1-Concept-idea.jpg)
  
  _Fig 1: Current chest X-ray diagnosis vs. novel process with PneumoScan.ai_
 
 
-A survey by the University of Michigan shows that patients usually expect the result came back after 2-3 days a chest X-ray test for pneumonia. (Crist, 2017) However, the average wait time for the patients is 11 days (2 weeks). This long delay happens because radiologists usually need at least 20 minutes to review the X-ray while the number of images keeps stacking up after each operation day of the clinic. New research has found that an artificial intelligence (AI) radiology platform such as our CovidScan.ai can dramatically reduce the patient’s wait time significantly, cutting the average delay from 11 days to less than 3 days for abnormal radiographs with critical findings. (Mauro et al., 2019) With this wait-tine reduction, patients I critical cases will receive their results faster, and receive appropriate care sooner. 
+A survey by the University of Michigan shows that patients usually expect the result came back after 2-3 days a chest X-ray test for Pneumonia. (Crist, 2017) However, the average wait time for the patients is 11 days (2 weeks). This long delay happens because radiologists usually need at least 20 minutes to review the X-ray while the number of images keeps stacking up after each operation day of the clinic. New research has found that an artificial intelligence (AI) radiology platform such as our CovidScan.ai can dramatically reduce the patient’s wait time significantly, cutting the average delay from 11 days to less than 3 days for abnormal radiographs with critical findings. (Mauro et al., 2019) With this wait-tine reduction, patients I critical cases will receive their results faster, and receive appropriate care sooner. 
 
  ![Alt text](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection/blob/main/Images/Fig2-AI-vs-Manual.png)
  
 _Fig 2: Chart of wait-time reduction of AI radiology tool (data from a simulation stud reported in Mauro et al., 2019)._
 
-In this tutorial, we’ll show you how to use Pytorch to build a machine learning web application to classify whether a patient has COVID-19, Pneumonia or no sign of any infection (normal) from chest x-ray images. We will focus on the Pytorch component of the AI application. 
+In this tutorial, we’ll show you how to use Pytorch to build a machine learning web application to classify whether a patient has Pneumonia-related disease (such as COVID-19) or no sign of any infection (Normal) from chest x-ray images. We will focus on the Pytorch component of the AI application. We only use a binary classification (Pneumonia or Normal) in this tutorial since it is a better starting point for beginners. We will discuss other additional resources for multi-classification of different diseases on chest X-ray (including COVID-19) in the section of additional resources.
 
 **Below are the 4 main step we’ll go over in the tutorial (We also attch the appoximate time that you should spend on reading and implementing the code of each section to understand it throughly):**
 
@@ -46,9 +46,9 @@ In this tutorial, we’ll show you how to use Pytorch to build a machine learnin
 
 ## 1.	Collecting the Data (2 minutes):
 To build the chest X-ray detection models, we used combined 2 sources of dataset:
-1.	The first source is the RSNA Pneumonia Detection Challenge dataset available on Kaggle contains several deidentified CXRs with 2 class labels of pneumonia and normal.
+1.	The first source is the RSNA Pneumonia Detection Challenge dataset available on Kaggle contains several deidentified CXRs with 2 class labels of Pneumonia and normal.
 2.	The COVID-19 image data collection repository on GitHub is a growing collection of deidentified CXRs from COVID-19 cases internationally. The data is collected by Joseph Paul Cohen and his fellow collaborators at the University of Montreal
-Eventually, our dataset consists of 5433 training data points, 624 validation data points and 16 test data points.
+Eventually, our dataset consists of 5433 training data points, 624 validation data points and 16 test data points. All the Pneumonia and COVID-19 case is put in the 
 
 ## 2. Preprocessing the data (10 minutes):
 First, we import all the require package:
@@ -226,7 +226,7 @@ class Model(nn.Module):
 
 ## d) Building the Activation Map For Visualization:
 
-We learnt earlier that the last layer of our network is Global Average Pooling layer. This last layer is useful for reducing the a tensor of trained weights from h x w x d to 1 x 1 x d. Then, we calculated the weighted sum from this 1 x 1 x d dimensional tensor and then fed into a softmax function to find the probabilities of the predicted class (COVID-19 or Normal). After getting the confirmed class from the model, we can map back this class to the weighted sum tensor to plot the the class activation map for visualization.
+We learnt earlier that the last layer of our network is Global Average Pooling layer. This last layer is useful for reducing the a tensor of trained weights from h x w x d to 1 x 1 x d. Then, we calculated the weighted sum from this 1 x 1 x d dimensional tensor and then fed into a softmax function to find the probabilities of the predicted class (Pneumonia or Normal). After getting the confirmed class from the model, we can map back this class to the weighted sum tensor to plot the the class activation map for visualization.
 
 In PyTorch, we can use the register_forward_hook module to obtain activation of the last convolutional layer as described above, we use the  register_forward_hook module. The code is as following:
  ```
@@ -311,7 +311,7 @@ If you follow pace of time listed in this tutorial, in under 2 hours, you alread
 
 The detailed web-developmeent process is not in the scope of this tutorial since we focus more on the Pytorch model to make the beginner user understand how we get to the finl visualization output from raw chest X-ray data. If you want to read more on how to implement the web-app, we can read the step-by-step instruction on this [gitlab tutorial](https://gitlab.com/sagban/pneumoscan-ppe).
 
-For this project, we only implement a binary classification of 2 classes (COVID-19 and Normal). If you want to get more inspiration on building a AI-based product from scratch with multi-class data using Pytorch and FastAi, you can check out this other project created by our team called [HemoCount](https://devpost.com/software/hemonet-an-ai-based-white-blood-cell-count-platform?ref_content=user-portfolio&ref_feature=in_progress).
+For this project, we only implement a binary classification of 2 classes (Pneumonia and Normal). If you want to get more inspiration on building a AI-based product from scratch with multi-class data using Pytorch and FastAi, you can check out this other project created by our team called [HemoCount](https://devpost.com/software/hemonet-an-ai-based-white-blood-cell-count-platform?ref_content=user-portfolio&ref_feature=in_progress).
 
 We hope you will have a good start by implementing this award-winning project, and be inspired to join other hackathons or datathon competition to build many other awesome AI products from scratch! Lastly, have a good hacking day, fellow hackers!
 
@@ -320,6 +320,4 @@ We hope you will have a good start by implementing this award-winning project, a
 Crist, C. (2017, November 30). Radiologists want patients to get test results faster. Retrieved from https://www.reuters.com/article/us-radiology-results-timeliness/radiologists-want-patients-to-get-test-results-faster-idUSKBN1DH2R6 
 
 Mauro Annarumma, Samuel J. Withey, Robert J. Bakewell, Emanuele Pesce, Vicky Goh, Giovanni Montana. (2019). Automated Triaging of Adult Chest Radiographs with Deep Artificial Neural Networks. Radiology; 180921 DOI: 10.1148/radiol.2018180921
-
- 
 
