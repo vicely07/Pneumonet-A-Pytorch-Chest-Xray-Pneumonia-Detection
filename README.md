@@ -41,8 +41,6 @@ In this tutorial, we’ll show you how to use Pytorch to build a machine learnin
 
 [5. Summary & Additional Resorces (5 minutes)](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection#5-summary)
 
-[References](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection/blob/main/README.md#references)
-
 
 ## 1.	Collecting the Data (2 minutes):
 To build the chest X-ray detection models, we used combined 2 sources of dataset:
