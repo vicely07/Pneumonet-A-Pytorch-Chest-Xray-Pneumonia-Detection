@@ -307,7 +307,10 @@ For this project, we only implement a binary classification of 2 classes (COVID-
 We hope you will have a good start by implementing this award-winning project, and be inspired to join other hackathons or datathon competition to build many other awesome AI products from scratch!
 
 
+## References:
+Crist, C. (2017, November 30). Radiologists want patients to get test results faster. Retrieved from https://www.reuters.com/article/us-radiology-results-timeliness/radiologists-want-patients-to-get-test-results-faster-idUSKBN1DH2R6
 
+Mauro Annarumma, Samuel J. Withey, Robert J. Bakewell, Emanuele Pesce, Vicky Goh, Giovanni Montana. (2019). Automated Triaging of Adult Chest Radiographs with Deep Artificial Neural Networks. Radiology; 180921 DOI: 10.1148/radiol.2018180921
 
  
 
