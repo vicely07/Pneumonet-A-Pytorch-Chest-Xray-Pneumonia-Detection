@@ -35,7 +35,7 @@ In this tutorial, we’ll show you how to use Pytorch to build a machine learnin
 
 [d) Building the Activation Map For Visualization](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection#d-building-the-activation-map-for-visualization)
 
-[4. Developing the Web-app](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection#e-developing-the-web-app)
+[4. Developing the Web-app](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection#4-developing-the-web-app)
 
 [5. Summary](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection#5-summary)
 
