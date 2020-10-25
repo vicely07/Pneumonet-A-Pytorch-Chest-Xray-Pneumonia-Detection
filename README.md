@@ -25,19 +25,19 @@ In this tutorial, we’ll show you how to use Pytorch to build a machine learnin
 
 [2. Preprocessing the Data](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection#2-preprocessing-the-data)
 
-3.	Building the Model
+[3.	Building the Model](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection#3-building-the-model)
 
-a) Basics of Transfer Learning
+[a) Basics of Transfer Learning](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection#a-basics-of-transfer-learning)
 
-b) Architecture of Resnet 152 with Global Average Pooling layer
+[b) Architecture of Resnet 152 with Global Average Pooling layer](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection#b-architecture-of-resnet-152-with-global-average-pooling-layer)
 
-c) Retraining Resnet 152 Model in Pytorch
+[c) Retraining Resnet 152 Model in Pytorch](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection#c-retraining-resnet-152-model-in-pytorch)
 
-d) Building the Activation Map For Visualization
+[d) Building the Activation Map For Visualization](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection#d-building-the-activation-map-for-visualization)
 
-e) Developing the Web-app
+[4. Developing the Web-app](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection#e-developing-the-web-app)
 
-4.	Deploying the Model a Web-app 
+[5. Summary](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection#5-summary)
 
 
 
@@ -294,7 +294,7 @@ def plot_input(image_list):
 plot_input(image_list)
 ```
 
-## e) Developing the Web-app:
+## 4. Developing the Web-app:
 
 As you can see, the final results look really nice. This activation map is super informative for the radiologists to quickly pinpoint the area of infection on chest X-ray. To make our project become more user-frinedly. the final step is web-app development with an interactive UI. The trained weights of the deep learning models are deployed in a form of Django backend web app CovidScan.ai. While the minimal front-end of this web app is done using HTML, CSS, Jquery, Bootstrap. In our latter stage, the web-app will then be deployed and hosted on Debian server. 
 
