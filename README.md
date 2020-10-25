@@ -21,7 +21,7 @@ In this tutorial, we’ll show you how to use Pytorch to build a machine learnin
 
 **Below are the 4 main step we’ll go over in the tutorial:**
 
-1.	Collecting Dataset
+[1.	Collecting Dataset](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection#1collecting-the-data)
 
 2. Preprocessing the Data
 
