@@ -283,16 +283,21 @@ for filename in glob.glob(test_dir+'/*.jpeg'):
 
 f, ax = plt.subplots(4,4, figsize=(30,10))
 
-def plot_input(image_list):
-  for i in range(len(image_list)):
-      img = imread(image_list[i])
-      name = image_list[i].split("/")
-      name = name[len(name)-1].split(".")[0]
-      ax[i//4, i%4].imshow(img, cmap='gray')
-      ax[i//4, i%4].set_title(name)
-      plt.tight_layout()
-  plt.show()
-plot_input(image_list)
+def predict_image(image, model_ft):
+  img, class_activation, pred = predict_img(image, model_ft)
+  print(pred.item())
+  name = image.split("/")
+  name = name[len(name)-1].split(".")[0]
+  img = Image.fromarray((img * 255).astype(np.uint8))
+  plt.ioff()
+  plt.imshow(class_activation, cmap='jet',alpha=1)
+  plt.imshow(img, alpha=0.55)
+  plt.title(dset['test'].classes[pred])
+  plt.tight_layout()
+
+  # plt.show()
+
+predict_image(image_list[12], model_ft)
 ```
 
 ## 4. Developing the Web-app (30 minutes):
