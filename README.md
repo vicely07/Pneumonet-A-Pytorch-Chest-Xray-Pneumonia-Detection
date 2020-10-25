@@ -19,13 +19,13 @@ _Fig 2: Chart of wait-time reduction of AI radiology tool (data from a simulatio
 
 In this tutorial, we’ll show you how to use Pytorch to build a machine learning web application to classify whether a patient has COVID-19, Pneumonia or no sign of any infection (normal) from chest x-ray images. We will focus on the Pytorch component of the AI application. 
 
-**Below are the 4 main step we’ll go over in the tutorial:**
+**Below are the 4 main step we’ll go over in the tutorial (We also attch the appoximate time that you should spend on reading and implementing the code of each section to understand it throughly):**
 
-[1.	Collecting Dataset](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection#1collecting-the-data)
+[1.	Collecting Dataset (2 minutes)](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection#1collecting-the-data)
 
-[2. Preprocessing the Data](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection#2-preprocessing-the-data)
+[2. Preprocessing the Data (10 minutes)](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection#2-preprocessing-the-data)
 
-[3.	Building the Model](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection#3-building-the-model)
+[3.	Building the Model (45 minutes)](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection#3-building-the-model)
 
 [a) Basics of Transfer Learning](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection#a-basics-of-transfer-learning)
 
@@ -35,19 +35,19 @@ In this tutorial, we’ll show you how to use Pytorch to build a machine learnin
 
 [d) Building the Activation Map For Visualization](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection#d-building-the-activation-map-for-visualization)
 
-[4. Developing the Web-app](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection#4-developing-the-web-app)
+[4. Developing the Web-app (30 minutes)](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection#4-developing-the-web-app)
 
 [5. Summary](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection#5-summary)
 
 
 
-## 1.	Collecting the Data:
+## 1.	Collecting the Data (2 minutes):
 To build the chest X-ray detection models, we used combined 2 sources of dataset:
 1.	The first source is the RSNA Pneumonia Detection Challenge dataset available on Kaggle contains several deidentified CXRs with 2 class labels of pneumonia and normal.
 2.	The COVID-19 image data collection repository on GitHub is a growing collection of deidentified CXRs from COVID-19 cases internationally. The data is collected by Joseph Paul Cohen and his fellow collaborators at the University of Montreal
 Eventually, our dataset consists of 5433 training data points, 624 validation data points and 16 test data points.
 
-## 2. Preprocessing the data:
+## 2. Preprocessing the data (10 minutes):
 First, we import all the require package:
 ```
 import torch
@@ -120,7 +120,7 @@ imshow(out, title = [class_names[x] for x in classes])
 ```
 From the plot of a batch of sample images, we can see the data is loaded properly and augmented in different variations. Then, we can start our model building process.
 
-## 3. Building the Model:
+## 3. Building the Model (45 minutes):
 
 ## a) Basics of Transfer Learning:
 
@@ -294,7 +294,7 @@ def plot_input(image_list):
 plot_input(image_list)
 ```
 
-## 4. Developing the Web-app:
+## 4. Developing the Web-app (30 minutes):
 
 As you can see, the final results look really nice. This activation map is super informative for the radiologists to quickly pinpoint the area of infection on chest X-ray. To make our project become more user-frinedly. the final step is web-app development with an interactive UI. From our training the model, the best model was saved in a .pthf file extension. The trained weights and architecture from this .pth file are then deployed in a form of Django backend web app CovidScan.ai. While the minimal front-end of this web app is done using HTML, CSS, Jquery, Bootstrap. In our latter stage, the web-app will then be deployed and hosted on Debian server. 
 
