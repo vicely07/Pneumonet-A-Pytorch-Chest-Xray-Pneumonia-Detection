@@ -39,7 +39,7 @@ In this tutorial, we’ll show you how to use Pytorch to build a machine learnin
 
 [5. Summary & Additional Resorces (5 minutes)](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection#5-summary)
 
-[References]()
+[References](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection/blob/main/README.md#references)
 
 
 ## 1.	Collecting the Data (2 minutes):
@@ -299,7 +299,7 @@ plot_input(image_list)
 
 As you can see, the final results look really nice. This activation map is super informative for the radiologists to quickly pinpoint the area of infection on chest X-ray. To make our project become more user-frinedly. the final step is web-app development with an interactive UI. From our training the model, the best model was saved in a .pthf file extension. The trained weights and architecture from this .pth file are then deployed in a form of Django backend web app CovidScan.ai. While the minimal front-end of this web app is done using HTML, CSS, Jquery, Bootstrap. In our latter stage, the web-app will then be deployed and hosted on Debian server. 
 
-## 5. Summary:
+## 5.  & Additional Resorces (5 minutes):
 In our tutorial, we explore a 5-step deep learning model building process using Pytorch. We also go over the concept of transfer learning and the architecture of our Resnet 152 model. We also learn to visualize the Activation Map using the last layer of our trained network. Eventually, we learnt how this deep neural network is deployed to a web-app.  The detailed web-developmeent process is not in the scope of this tutorial since we focus more on the Pytorch model to make the beginner user understand how we get to the finl visualization output from raw chest X-ray data. If you want to read more on how to implement the web-app, we can read the step-by-step instruction on this [gitlab tutorial](https://gitlab.com/sagban/pneumoscan-ppe).
 
 For this project, we only implement a binary classification of 2 classes (COVID-19 and Normal). If you want to get more inspiration on building a AI-based product from scratch with multi-class data using Pytorch and FastAi, you can check out this other project created by our team called [HemoCount](https://devpost.com/software/hemonet-an-ai-based-white-blood-cell-count-platform?ref_content=user-portfolio&ref_feature=in_progress)
