@@ -23,13 +23,21 @@ In this tutorial, we’ll show you how to use Pytorch to build a machine learnin
 
 [1.	Collecting Dataset](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection#1collecting-the-data)
 
-2. Preprocessing the Data
+[2. Preprocessing the Data](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection#2-preprocessing-the-data)
 
-3.	Building and Training the Deep Learning Model
+3.	Building the Model
 
-4.	Evaluating the Model
+a) Basics of Transfer Learning
 
-5.	Deploying the Model a Web-app 
+b) Architecture of Resnet 152 with Global Average Pooling layer
+
+c) Retraining Resnet 152 Model in Pytorch
+
+d) Building the Activation Map For Visualization
+
+e) Developing the Web-app
+
+4.	Deploying the Model a Web-app 
 
 
 
@@ -112,19 +120,19 @@ imshow(out, title = [class_names[x] for x in classes])
 ```
 From the plot of a batch of sample images, we can see the data is loaded properly and augmented in different variations. Then, we can start our model building process.
 
-## 2. Building the Model:
+## 3. Building the Model:
 
-**Transfer Learning:**
+## a) Basics of Transfer Learning:
 
 In order to predict well the classes of an image, the neural network needs to be super efficient in extracting the features from the input images. Hence, the model first needs to be trained on a huge dataset to get really good at feature-extraction. However, not everyone, especially beginners in ML, access to powerful GPU or the indept knowledge to train on such big data. That is why we leverage transfer learning in our model building process, which save us  a lot of time and trouble in building an state-of-art model from scratch. Luckily for us, the torchvision module already includes several state of the art models trained on the huge dataset of Imagenet (more than 14 millions of 20,000 categories). Hence, these pretrained model is crazily good at feature extraction of thousand type of objects. 
 
-**Resnet 152 with Global Average Pooling layer:**
+## b) Architecture of Resnet 152 with Global Average Pooling layer:
 
 For the project, we use the pretrained ResNet 152 provided in Pytorch libary. ResNet models is arranged in a series of convolutional layers in very deep network architecture. The layers are in form of residual blocks, which allow gradient flow in very deep networks using skip connections as shown in fig. These connections help preventing the problem of vanishing gradients which are very pervasive in very deep convolutional networks. In the last layer of the Resnet, we use the Global Average Pooling layer instead of fully connected layers to reduce the number of parameters created by fully-connected layers to zero. Hence, we can avoid over-fitting (which is a common problem of deep network architecture as Resnet). 
 
  ![Alt text](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection/blob/main/Images/deep%20network.png)
 
- **Building the Baseline Model:**
+ ## c) Retraining Resnet 152 Model in Pytorch:
  
 Before we get into the actually model building process, you can refresh you memory on the basic of deep learning using these two recommended tutorial from Pytorch.
 
@@ -213,7 +221,7 @@ class Model(nn.Module):
         return self.model
 ```
 
-**Building the Activation Map For Visualization:**
+## d) Building the Activation Map For Visualization:
 
 We learnt earlier that the last layer of our network is Global Average Pooling layer. This last layer is useful for reducing the a tensor of trained weights from h x w x d to 1 x 1 x d. Then, we calculated the weighted sum from this 1 x 1 x d dimensional tensor and then fed into a softmax function to find the probabilities of the predicted class (COVID-19 or Normal). After getting the confirmed class from the model, we can map back this class to the weighted sum tensor to plot the the class activation map for visualization.
 
@@ -286,11 +294,11 @@ def plot_input(image_list):
 plot_input(image_list)
 ```
 
-## Web-app development:
+## e) Developing the Web-app:
 
 As you can see, the final results look really nice. This activation map is super informative for the radiologists to quickly pinpoint the area of infection on chest X-ray. To make our project become more user-frinedly. the final step is web-app development with an interactive UI. The trained weights of the deep learning models are deployed in a form of Django backend web app CovidScan.ai. While the minimal front-end of this web app is done using HTML, CSS, Jquery, Bootstrap. In our latter stage, the web-app will then be deployed and hosted on Debian server. 
 
-## Summary:
+## 5. Summary:
 In our tutorial, we explore a 5-step deep learning model building process using Pytorch. We also go over the concept of transfer learning and the architecture of our Resnet 152 model. We also learn to visualize the Activation Map using the last layer of our trained network. Eventually, we learnt how this deep neural network is deployed to a web-app.  The detailed web-developmeent process is not in the scope of this tutorial since we focus more on the Pytorch model to make the beginner user understand how we get to the finl visualization output from raw chest X-ray data. If you want to read more on how to implement the web-app, we can read the step-by-step instruction on this github tutorial.
 
 For this project, we only implement a binary classification of 2 classes (COVID-19 and Normal). If you want to get more inspiration on building a AI-based product from scratch with multi-class data using Pytorch and FastAi, you can check out this other project created by our team called HemoCount: https://devpost.com/software/hemonet-an-ai-based-white-blood-cell-count-platform?ref_content=user-portfolio&ref_feature=in_progress
