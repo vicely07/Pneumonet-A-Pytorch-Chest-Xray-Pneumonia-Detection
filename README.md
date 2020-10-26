@@ -20,7 +20,7 @@ A survey by the University of Michigan shows that patients usually expect the re
 _<div align="center">Fig 2: Chart of wait-time reduction of AI radiology tool (data from a simulation stud reported in Mauro et al., 2019).</div>
 &nbsp;_
 
-In this tutorial, we’ll show you how to use Pytorch to build a machine learning web application to classify whether a patient has Pneumonia-related disease (such as COVID-19) or no sign of any infection (Normal) from chest x-ray images. We will focus on the Pytorch component of the AI application. We only use a binary classification (Pneumonia or Normal) in this tutorial since it is a better starting point for beginners. We will discuss other additional resources for the multi-classification of different diseases on chest X-ray (including COVID-19) in the section of additional resources.
+In this tutorial, we’ll show you how to use Pytorch to build a machine learning web application to classify whether a patient has Pneumonia-related disease (including COVID-19) or no sign of any infection (normal) from chest x-ray images. We will focus on the Pytorch component of the AI application. We combine COVID-19 images with Pneumonia since not a big amound of COVID image made publicly avaible for open-source. That will create a huge problem with imbalance class. Therefore, to make our tutorial more disgetible and accessible for beginners, we only use a binary classification (Pneumonia or Normal) in this tutorial. At the end of this tutorial, we will discuss other additional resources for the multi-classification of different diseases on chest X-ray (including COVID-19) in the section of additional resources.
 
 **Below are the 4 main steps we’ll go over in the tutorial (We also attach the approximate time that you should spend on reading and implementing the code of each section to understand it thoroughly):**
 
@@ -36,8 +36,10 @@ In this tutorial, we’ll show you how to use Pytorch to build a machine learnin
 
  > **[c) Retraining Resnet 152 Model in Pytorch](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection#c-retraining-resnet-152-model-in-pytorch)**
 
- > **[d) Building the Activation Map For Visualization](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection#d-building-the-activation-map-for-visualization)**
- > **Model evaluation:**
+ > **[d) Model evaluation:]**
+
+ > **[e) Building the Activation Map For Visualization](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection#d-building-the-activation-map-for-visualization)**
+
 
 **[4. Developing the Web-app (30 minutes)](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection#4-developing-the-web-app)**
 
@@ -101,7 +103,7 @@ dset = {x : torchvision.datasets.ImageFolder(path+x, transform=transformers[y]) 
 dataset_sizes = {x : len(dset[x]) for x in ["train","test"]}
 num_threads = 4
 
-#By passing a dataset instance into a DataLoader module, we create dataloader which generates images in batches.
+# The DataLoader module generates images in batches.
 dataloaders =  {x : torch.utils.data.DataLoader(dset[x], batch_size=256, shuffle=True, num_workers=num_threads)
                for x in categories}
 ```
@@ -137,7 +139,7 @@ You can read more about transfer learning in imaging in this [Pytorch document](
 
 ## b) Architecture of Resnet 152 with Global Average Pooling layer:
 
-For the project, we use the pretrained ResNet 152 provided in Pytorch libary. ResNet models is arranged in a series of convolutional layers in very deep network architecture. The layers are in form of residual blocks, which allow gradient flow in very deep networks using skip connections as shown in fig. These connections help preventing the problem of vanishing gradients which are very pervasive in very deep convolutional networks. In the last layer of the Resnet, we use the Global Average Pooling layer instead of fully connected layers to reduce the number of parameters created by fully-connected layers to zero. Hence, we can avoid over-fitting (which is a common problem of deep network architecture as Resnet). More details on Resnet models [here](https://pytorch.org/hub/pytorch_vision_resnet/) and Global Max Pooling [here](https://www.machinecurve.com/index.php/2020/01/30/what-are-max-pooling-average-pooling-global-max-pooling-and-global-average-pooling/)
+For the project, we use the pretrained ResNet 152 provided in Pytorch libary. ResNet models is arranged in a series of convolutional layers in very deep network architecture. The layers are in form of residual blocks, which allow gradient flow in very deep networks using skip connections as shown in fig. These connections help preventing the problem of vanishing gradients which are very pervasive in very deep convolutional networks. In the last layer of the Resnet, we use the Global Average Pooling layer instead of fully connected layers to reduce the number of parameters created by fully-connected layers to zero. Hence, we can avoid over-fitting (which is a common problem of deep network architecture as Resnet). More details on Resnet models [here](https://pytorch.org/hub/pytorch_vision_resnet/) and Global Max Pooling [here](https://www.machinecurve.com/index.php/2020/01/30/what-are-max-pooling-average-pooling-global-max-pooling-and-global-average-pooling/). At the end of the network, we will leverage the Global Max Pooling to visualize the class activation map, which we will discuss in section 2.e. The whole architecture can be found in the figure below:
 
  ![Alt text](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection/blob/main/Images/deep%20network.png)
  _<div align="center">Fig 3: Deep neural network architecture. Our model includes Resnet, Global Max Pooling and Activation Map.</div>_
@@ -274,7 +276,7 @@ The model seems to perform well on both the training and testing set. However, w
 
 ## e) Building the Activation Map For Visualization:
 
-We learned earlier that the last layer of our network is the Global Average Pooling layer. This last layer is useful for reducing the tensor of trained weights from h x w x d to 1 x 1 x d. Then, we calculated the weighted sum from this 1 x 1 x d dimensional tensor and then fed into a softmax function to find the probabilities of the predicted class (Pneumonia or Normal). After getting the confirmed class from the model, we can map back this class to the weighted sum tensor to plot the class activation map for visualization.
+We learned earlier that the last layer of our network is the Global Average Pooling layer. This last layer is useful for reducing the tensor of trained weights from h x w x d to 1 x 1 x d. Then, we calculated the weighted sum from this 1 x 1 x d dimensional tensor and then fed into a softmax function to find the probabilities of the predicted class (Pneumonia or Normal). After getting the confirmed class from the model, we can map back this class to the weighted sum tensor to plot the class activation map for visualization. You can read more about class activation map [here](https://towardsdatascience.com/activation-maps-for-deep-learning-models-in-a-few-lines-of-code-ed9ced1e8d21#:~:text=Activation%20maps%20are%20just%20a,of%20various%20linear%20algebraic%20operations.&text=high%20learning%20rates.-,Activation%20maps%20are%20just%20a%20visual%20representation%20of%20these%20activation,various%20layers%20of%20the%20network.)
 
 In PyTorch, we can use the register_forward_hook module to obtain activation of the last convolutional layer as described above, we use the  register_forward_hook module. The code is as following:
  ```
@@ -362,9 +364,9 @@ predict_image(image_list[1], model_ft)
 As you can see, the final results look really nice. This activation map is super informative for the radiologists to quickly pinpoint the area of infection on chest X-ray. To make our project more user-friendly. the final step is web-app development with an interactive UI. From our training the model, the best model was saved in a .pthf file extension. The trained weights and architecture from this .pth file are then deployed in a form of Django backend web app CovidScan.ai. While the minimal front-end of this web app is done using HTML, CSS, Jquery, Bootstrap. In our latter stage, the web-app will then be deployed and hosted on a Debian server. 
 
 ## 5. Summary & Additional Resorces (5 minutes):
-If you follow the learning pace listed in this tutorial, in under 2 hours, you already explored a 5-step deep learning model building process using Pytorch. You also went over the concept of transfer learning and the architecture of our Resnet 152 model. Also, you learned to visualize the Activation Map using the last layer of our trained network. Eventually, you took a peek inside how this deep neural network is deployed to a web-app. 
+If you follow the learning pace listed in this tutorial, in under 2 hours, you already explored a 5-step deep learning model building process using Pytorch. You also went over the concept of transfer learning and the architecture of our Resnet 152 model. Also, you learned to visualize the Activation Map using the last layer of our trained network. Eventually, you took a peek inside how this deep neural network is deployed to a [web-app demo](https://www.cv19scan.site/). 
 
-The detailed web-development process is not in the scope of this tutorial since we focus more on the Pytorch model to make the beginner user understand how we get to the final visualization output from raw chest X-ray data. If you want to read more on how to implement the web-app, we can read the step-by-step instruction on this [gitlab tutorial](https://gitlab.com/sagban/pneumoscan-ppe).
+The detailed web-development process is not in the scope of this tutorial since we focus more on the Pytorch model to make the beginner user understand how we get to the final visualization output from raw chest X-ray data. If you want to read more on how to implement the web-app, we can read the step-by-step instruction on this [gitlab tutorial](https://gitlab.com/sagban/pneumoscan-ppe). 
 
 For this project, we only implement a binary classification of 2 classes (Pneumonia and Normal). If you want to get more inspiration on building an AI-based product from scratch with multi-class data using Pytorch and FastAi, you can check out this other project created by our team called [HemoCount](https://devpost.com/software/hemonet-an-ai-based-white-blood-cell-count-platform?ref_content=user-portfolio&ref_feature=in_progress).
 
