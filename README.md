@@ -57,11 +57,11 @@ import torch.nn as nn
 import torch.optim as optim
 import torchvision.transforms as transforms
 import numpy as np
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt #To visualize the data
 import copy
-import time
-import PIL
-import scipy.ndimage as nd
+import time #To track the running time of our model
+import PIL # To load image data to Python
+import scipy.ndimage as nd #To perform preprosssing on image data 
 ```
 
 The more data, the better the model will learn. Hence, apply some data augmentation to generate different variations of the original data to increase the sample size for training, validation and testing process. This augmentation can be performed by defining a set of transforming functions in the torchvision module. The detailed codes are as following:
@@ -137,7 +137,7 @@ For the project, we use the pretrained ResNet 152 provided in Pytorch libary. Re
 
  ## c) Retraining Resnet 152 Model in Pytorch:
  
-Before we get into the actually model building process, you can refresh you memory on the basic of deep learning using this recommended [tutorial](https://pytorch.org/tutorials/beginner/blitz/neural_networks_tutorial.html) from Pytorch.
+Before we get into the actually model building process, you can refresh you memory on the basic of deep learning using [this recommended tutorial](https://pytorch.org/tutorials/beginner/blitz/neural_networks_tutorial.html) from Pytorch.
 
 
 After refreshing your memory on the basic, we can start with this project using the COVID chest X-ray data. First, we need to initalize our model class by calling the nn.Module, which create a graph-like structure of our network. In particularly, as we mentioned earlier, the pretrained model of Resnet152 was used in our training process. This transfer learning give us a big advantage in retraining on Hence, we need to define our ResNet-152 in the init of nn.Module for transfer learning. Then after define the init function, we need to create forward function as part of requirement for Pytorch. 
