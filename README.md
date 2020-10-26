@@ -350,7 +350,6 @@ predict_image(image_list[12], model_ft)
 predict_image(image_list[1], model_ft)
 ```
  ![Alt text](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection/blob/main/Images/Pneumonia-output.png)
-```
 
 ## 4. Developing the Web-app (30 minutes):
 
@@ -364,7 +363,6 @@ The detailed web-developmeent process is not in the scope of this tutorial since
 For this project, we only implement a binary classification of 2 classes (Pneumonia and Normal). If you want to get more inspiration on building a AI-based product from scratch with multi-class data using Pytorch and FastAi, you can check out this other project created by our team called [HemoCount](https://devpost.com/software/hemonet-an-ai-based-white-blood-cell-count-platform?ref_content=user-portfolio&ref_feature=in_progress).
 
 We hope you will have a good start by implementing this award-winning project, and be inspired to join other hackathons or datathon competition to build many other awesome AI products from scratch! Lastly, have a good hacking day, fellow hackers!
-
 
 ## References:
 Crist, C. (2017, November 30). Radiologists want patients to get test results faster. Retrieved from https://www.reuters.com/article/us-radiology-results-timeliness/radiologists-want-patients-to-get-test-results-faster-idUSKBN1DH2R6 
