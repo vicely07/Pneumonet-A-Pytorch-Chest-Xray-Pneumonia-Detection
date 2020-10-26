@@ -230,7 +230,7 @@ torch.save(model.state_dict(), "./Best_weights/best_covid_model.pth")
 ```
 When we want to load this trained weights back to the model for prediction on new data, we just need to follow these lines of code:
 ```
-state_dict = torch.load("/content/drive/My Drive/FB-Ai-Hackathon/pneumonia-pytorch-localization/Best_weights/best_pnemonia_model.pth")
+state_dict = torch.load("./Best_weights/best_covid_model.pth")
 model.load_state_dict(state_dict, strict=False)
 model_ft = model.model
 model_ft = model_ft.eval()
