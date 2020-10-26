@@ -1,4 +1,4 @@
-# PneumoNet - Building an AI COVID-19 Product Using Transfer Learning in Pytorch (Implementation Time: Under 2 hours)
+# PneumoNet-Building an AI COVID-19 Product from Scratch with Pytorch (Implementation Time: Under 2 hours)
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://drive.google.com/file/d/12HRGEr68eZTHcsZBcvDu6NomrrZcSvk_/view?usp=sharing)
 
@@ -6,21 +6,21 @@
 
 ## Background:
 
-In screening for COVID-19, patients can first be screened for flu-like symptoms using nasal swap to confirm their status. After 14 days of quarantine for confirmed cases, the hospital draws the patient’s blood and takes the patient’s chest X-ray. Chest X-ray is a golden standard for physicians and radiologists to check for the infection caused by the virus. An x-ray imaging will allow your doctor to see your lungs, heart and blood vessels to help determine if you have Pneumonia. When interpreting the x-ray, the radiologist will look for white spots in the lungs (called infiltrates) that identify an infection. This exam, together with other vital signs such as temperature, or flu-like symptoms, will also help doctors determine whether a patient is infected with Pneumonia or other Pneumonia-related diseases. The standard procedure of Pneumonia diagnosis involves a radiologist reviewing chest x-ray images and send the result report to a patient’s primary care physician (PCP), who then will discuss the results with the patient.
+In screening for COVID-19, patients can first be screened for flu-like symptoms using a nasal swap to confirm their status. After 14 days of quarantine for confirmed cases, the hospital draws the patient’s blood and takes the patient’s chest X-ray. Chest X-ray is a golden standard for physicians and radiologists to check for the infection caused by the virus. An x-ray imaging will allow your doctor to see your lungs, heart, and blood vessels to help determine if you have Pneumonia. When interpreting the x-ray, the radiologist will look for white spots in the lungs (called infiltrates) that identify an infection. This exam, together with other vital signs such as temperature, or flu-like symptoms, will also help doctors determine whether a patient is infected with Pneumonia or other Pneumonia-related diseases. The standard procedure of Pneumonia diagnosis involves a radiologist reviewing chest x-ray images and send the result report to a patient’s primary care physician (PCP), who then will discuss the results with the patient.
 
  ![Alt text](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection/blob/main/Images/Fig1-Concept-idea.jpg)
  
  <div align="center">Fig 1: Current chest X-ray diagnosis vs. novel process with PneumoScan.ai.</div>
 
-A survey by the University of Michigan shows that patients usually expect the result came back after 2-3 days a chest X-ray test for Pneumonia. (Crist, 2017) However, the average wait time for the patients is 11 days (2 weeks). This long delay happens because radiologists usually need at least 20 minutes to review the X-ray while the number of images keeps stacking up after each operation day of the clinic. New research has found that an artificial intelligence (AI) radiology platform such as our CovidScan.ai can dramatically reduce the patient’s wait time significantly, cutting the average delay from 11 days to less than 3 days for abnormal radiographs with critical findings. (Mauro et al., 2019) With this wait-tine reduction, patients I critical cases will receive their results faster, and receive appropriate care sooner. 
+A survey by the University of Michigan shows that patients usually expect the result came back after 2-3 days a chest X-ray test for Pneumonia. (Crist, 2017) However, the average wait time for the patients is 11 days (2 weeks). This long delay happens because radiologists usually need at least 20 minutes to review the X-ray while the number of images keeps stacking up after each operation day of the clinic. New research has found that an artificial intelligence (AI) radiology platform such as our CovidScan.ai can dramatically reduce the patient’s wait time significantly, cutting the average delay from 11 days to less than 3 days for abnormal radiographs with critical findings. (Mauro et al., 2019) With this wait-time reduction, patients I critical cases will receive their results faster and receive appropriate care sooner. 
 
  ![Alt text](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection/blob/main/Images/Fig2-AI-vs-Manual.png)
  
 <div align="center">Fig 2: Chart of wait-time reduction of AI radiology tool (data from a simulation stud reported in Mauro et al., 2019).</div>
 
-In this tutorial, we’ll show you how to use Pytorch to build a machine learning web application to classify whether a patient has Pneumonia-related disease (such as COVID-19) or no sign of any infection (Normal) from chest x-ray images. We will focus on the Pytorch component of the AI application. We only use a binary classification (Pneumonia or Normal) in this tutorial since it is a better starting point for beginners. We will discuss other additional resources for multi-classification of different diseases on chest X-ray (including COVID-19) in the section of additional resources.
+In this tutorial, we’ll show you how to use Pytorch to build a machine learning web application to classify whether a patient has Pneumonia-related disease (such as COVID-19) or no sign of any infection (Normal) from chest x-ray images. We will focus on the Pytorch component of the AI application. We only use a binary classification (Pneumonia or Normal) in this tutorial since it is a better starting point for beginners. We will discuss other additional resources for the multi-classification of different diseases on chest X-ray (including COVID-19) in the section of additional resources.
 
-**Below are the 4 main step we’ll go over in the tutorial (We also attch the appoximate time that you should spend on reading and implementing the code of each section to understand it throughly):**
+**Below are the 4 main steps we’ll go over in the tutorial (We also attach the approximate time that you should spend on reading and implementing the code of each section to understand it thoroughly):**
 
 **[1.	Collecting Dataset (2 minutes)](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection#1collecting-the-data)**
 
@@ -43,15 +43,15 @@ In this tutorial, we’ll show you how to use Pytorch to build a machine learnin
 
 
 ## 1.	Collecting the Data (2 minutes):
-To build the chest X-ray detection models, we used combined 2 sources of dataset:
+To build the chest X-ray detection models, we used combined 2 sources of the dataset:
 1.	The first source is the RSNA Pneumonia Detection Challenge dataset available on Kaggle contains several deidentified CXRs with 2 class labels of Pneumonia and normal.
 2.	The COVID-19 image data collection repository on GitHub is a growing collection of deidentified CXRs from COVID-19 cases internationally. The data is collected by Joseph Paul Cohen and his fellow collaborators at the University of Montreal
-Eventually, we combine Pneumonia case and COVID case into the Pneumonina-related disease category and the rest in the normal category. our dataset consists of 2624 training data points, 16 validation data points and 228 test data points. 
+Eventually, we combine the Pneumonia case and COVID case into the Pneumonia-related disease category and the rest in the normal category. our dataset consists of 2624 training data points, 16 validation data points, and 228 test data points. 
 
 ## 2. Preprocessing the data (10 minutes):
-Since the training process on imaging data of over 2300+ images will be intensive for our local computer, it is a good idea to leverage the free GPU provided by Google Colab. Colab is a good tool for beginners to use since many people may not have access to advanced computing power in hands. More details on how to setting up Google Colab notebook can be found [here](https://www.analyticsvidhya.com/blog/2020/03/google-colab-machine-learning-deep-learning/).
+Since the training process on imaging data of over 2300+ images will be intensive for our local computer, it is a good idea to leverage the free GPU provided by Google Colab. Colab is a good tool for beginners to use since many people may not have access to advanced computing power in hands. More details on how to set up Google Colab notebook can be found [here](https://www.analyticsvidhya.com/blog/2020/03/google-colab-machine-learning-deep-learning/).
 
-After setting up the Colab notebook on Google free GPU, now we can get started with our project. First, we import all the require package:
+After setting up the Colab notebook on Google free GPU, now we can get started with our project. First, we import all the required package:
 ```
 import torch
 import torchvision
@@ -129,7 +129,7 @@ From the plot of a batch of sample images, we can see the data is loaded properl
 
 ## a) Basics of Transfer Learning:
 
-In order to predict well the classes of an image, the neural network needs to be super efficient in extracting the features from the input images. Hence, the model first needs to be trained on a huge dataset to get really good at feature-extraction. However, not everyone, especially beginners in ML, access to powerful GPU or the indept knowledge to train on such big data. That is why we leverage transfer learning in our model building process, which save us  a lot of time and trouble in building an state-of-art model from scratch. Luckily for us, the torchvision module already includes several state of the art models trained on the huge dataset of Imagenet (more than 14 millions of 20,000 categories). Hence, these pretrained model is crazily good at feature extraction of thousand type of objects. 
+In order to predict well the classes of an image, the neural network needs to be super efficient in extracting the features from the input images. Hence, the model first needs to be trained on a huge dataset to get really good at feature-extraction. However, not everyone, especially beginners in ML, accesses to powerful GPU or the in-depth knowledge to train on such big data. That is why we leverage transfer learning in our model building process, which saves us a lot of time and trouble in building a state-of-art model from scratch. Luckily for us, the torchvision module already includes several state of the art models trained on the huge dataset of Imagenet (more than 14 millions of 20,000 categories). Hence, these pretrained model is crazily good at feature extraction of thousand type of objects. 
 
 You can read more about transfer learning in imaging in this [Pytorch document](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html).
 
@@ -141,10 +141,10 @@ For the project, we use the pretrained ResNet 152 provided in Pytorch libary. Re
 
  ## c) Retraining Resnet 152 Model in Pytorch:
  
-Before we get into the actually model building process, you can refresh you memory on the basic of deep learning using [this recommended tutorial](https://pytorch.org/tutorials/beginner/blitz/neural_networks_tutorial.html) from Pytorch.
+Before we get into the actual model building process, you can refresh your memory on the basics of deep learning using [this recommended tutorial](https://pytorch.org/tutorials/beginner/blitz/neural_networks_tutorial.html) from Pytorch.
 
 
-After refreshing your memory on the basic, we can start with this project using the COVID chest X-ray data. First, we need to initalize our model class by calling the nn.Module, which create a graph-like structure of our network. In particularly, as we mentioned earlier, the pretrained model of Resnet152 was used in our training process. This transfer learning give us a big advantage in retraining on Hence, we need to define our ResNet-152 in the init of nn.Module for transfer learning. Then after define the init function, we need to create forward function as part of requirement for Pytorch. 
+After refreshing your memory on the basics, we can start with this project using the COVID chest X-ray data. First, we need to initialize our model class by calling the nn.Module, which create a graph-like structure of our network. In particularly, as we mentioned earlier, the pretrained model of Resnet152 was used in our training process. This transfer learning give us a big advantage in retraining on Hence, we need to define our ResNet-152 in the init of nn.Module for transfer learning. Then after define the init function, we need to create a forward function as part of the requirement for Pytorch. 
 
 ```
 ##Build model
@@ -224,7 +224,7 @@ class Model(nn.Module):
         self.model.load_state_dict(best_model_wts)
         return self.model
 ```
-After building the Model module with the pretrained Resnet 152, we can now use this model to retrain on our own training using the fit function. This function also take care of cross validation using our validating data. To make sure the model have enough time to learn the features in our chest X-ray data, we will set the epoch to 100. 
+After building the Model module with the pretrained Resnet 152, we can now use this model to retrain on our training using the fit function. This function also takes care of cross-validation using our validating data. To make sure the model has enough time to learn the features in our chest X-ray data, we will set the epoch to 100. 
 ```
 model = Model()
 model.fit(dataloaders, 100)
@@ -267,11 +267,11 @@ check_accuracy(dataloaders['train'], model)
 ```
 Got 188 / 228 with accuracy 82.46
 
-The model seems to perform well on both training and testing set. However, we still see some slight overfitting since the training accuracy is higher than the testing accuracy (Read more about over-fitting [here](https://towardsdatascience.com/overfitting-vs-underfitting-a-complete-example-d05dd7e19765)). We can still improve this model. However, since handling overfitting is not a focus of this tutorial, we will not go details into it. You can experiment with the method suggested here and see if you can improve the performance of our model. You can read about different way to handle overfitting [here](https://towardsdatascience.com/handling-overfitting-in-deep-learning-models-c760ee047c6e)
+The model seems to perform well on both the training and testing set. However, we still see some slight overfitting since the training accuracy is higher than the testing accuracy (Read more about over-fitting [here](https://towardsdatascience.com/overfitting-vs-underfitting-a-complete-example-d05dd7e19765)). We can still improve this model. However, since handling overfitting is not a focus of this tutorial, we will not go details into it. You can experiment with the method suggested here and see if you can improve the performance of our model. You can read about a different way to handle overfitting [here](https://towardsdatascience.com/handling-overfitting-in-deep-learning-models-c760ee047c6e)
 
 ## e) Building the Activation Map For Visualization:
 
-We learnt earlier that the last layer of our network is Global Average Pooling layer. This last layer is useful for reducing the a tensor of trained weights from h x w x d to 1 x 1 x d. Then, we calculated the weighted sum from this 1 x 1 x d dimensional tensor and then fed into a softmax function to find the probabilities of the predicted class (Pneumonia or Normal). After getting the confirmed class from the model, we can map back this class to the weighted sum tensor to plot the the class activation map for visualization.
+We learned earlier that the last layer of our network is the Global Average Pooling layer. This last layer is useful for reducing the tensor of trained weights from h x w x d to 1 x 1 x d. Then, we calculated the weighted sum from this 1 x 1 x d dimensional tensor and then fed into a softmax function to find the probabilities of the predicted class (Pneumonia or Normal). After getting the confirmed class from the model, we can map back this class to the weighted sum tensor to plot the class activation map for visualization.
 
 In PyTorch, we can use the register_forward_hook module to obtain activation of the last convolutional layer as described above, we use the  register_forward_hook module. The code is as following:
  ```
@@ -356,19 +356,18 @@ predict_image(image_list[1], model_ft)
 
 ## 4. Developing the Web-app (30 minutes):
 
-As you can see, the final results look really nice. This activation map is super informative for the radiologists to quickly pinpoint the area of infection on chest X-ray. To make our project become more user-frinedly. the final step is web-app development with an interactive UI. From our training the model, the best model was saved in a .pthf file extension. The trained weights and architecture from this .pth file are then deployed in a form of Django backend web app CovidScan.ai. While the minimal front-end of this web app is done using HTML, CSS, Jquery, Bootstrap. In our latter stage, the web-app will then be deployed and hosted on Debian server. 
+As you can see, the final results look really nice. This activation map is super informative for the radiologists to quickly pinpoint the area of infection on chest X-ray. To make our project more user-friendly. the final step is web-app development with an interactive UI. From our training the model, the best model was saved in a .pthf file extension. The trained weights and architecture from this .pth file are then deployed in a form of Django backend web app CovidScan.ai. While the minimal front-end of this web app is done using HTML, CSS, Jquery, Bootstrap. In our latter stage, the web-app will then be deployed and hosted on a Debian server. 
 
 ## 5. Summary & Additional Resorces (5 minutes):
-If you follow pace of time listed in this tutorial, in under 2 hours, you already explored a 5-step deep learning model building process using Pytorch. You also went over the concept of transfer learning and the architecture of our Resnet 152 model. In addition, you learnt to visualize the Activation Map using the last layer of our trained network. Eventually, you took a peek inside how this deep neural network is deployed to a web-app. 
+If you follow the learning pace listed in this tutorial, in under 2 hours, you already explored a 5-step deep learning model building process using Pytorch. You also went over the concept of transfer learning and the architecture of our Resnet 152 model. Also, you learned to visualize the Activation Map using the last layer of our trained network. Eventually, you took a peek inside how this deep neural network is deployed to a web-app. 
 
-The detailed web-developmeent process is not in the scope of this tutorial since we focus more on the Pytorch model to make the beginner user understand how we get to the finl visualization output from raw chest X-ray data. If you want to read more on how to implement the web-app, we can read the step-by-step instruction on this [gitlab tutorial](https://gitlab.com/sagban/pneumoscan-ppe).
+The detailed web-development process is not in the scope of this tutorial since we focus more on the Pytorch model to make the beginner user understand how we get to the final visualization output from raw chest X-ray data. If you want to read more on how to implement the web-app, we can read the step-by-step instruction on this [gitlab tutorial](https://gitlab.com/sagban/pneumoscan-ppe).
 
-For this project, we only implement a binary classification of 2 classes (Pneumonia and Normal). If you want to get more inspiration on building a AI-based product from scratch with multi-class data using Pytorch and FastAi, you can check out this other project created by our team called [HemoCount](https://devpost.com/software/hemonet-an-ai-based-white-blood-cell-count-platform?ref_content=user-portfolio&ref_feature=in_progress).
+For this project, we only implement a binary classification of 2 classes (Pneumonia and Normal). If you want to get more inspiration on building an AI-based product from scratch with multi-class data using Pytorch and FastAi, you can check out this other project created by our team called [HemoCount](https://devpost.com/software/hemonet-an-ai-based-white-blood-cell-count-platform?ref_content=user-portfolio&ref_feature=in_progress).
 
-We hope you will have a good start by implementing this award-winning project, and be inspired to join other hackathons or datathon competition to build many other awesome AI products from scratch! Lastly, have a good hacking day, fellow hackers!
+We hope you will have a good start by implementing this award-winning project and be inspired to join other hackathons or datathon competition to build many other awesome AI products from scratch! Lastly, have a good hacking day, fellow hackers!
 
 ## References:
 Crist, C. (2017, November 30). Radiologists want patients to get test results faster. Retrieved from https://www.reuters.com/article/us-radiology-results-timeliness/radiologists-want-patients-to-get-test-results-faster-idUSKBN1DH2R6 
 
 Mauro Annarumma, Samuel J. Withey, Robert J. Bakewell, Emanuele Pesce, Vicky Goh, Giovanni Montana. (2019). Automated Triaging of Adult Chest Radiographs with Deep Artificial Neural Networks. Radiology; 180921 DOI: 10.1148/radiol.2018180921
-
