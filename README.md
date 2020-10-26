@@ -138,6 +138,7 @@ You can read more about transfer learning in imaging in this [Pytorch document](
 For the project, we use the pretrained ResNet 152 provided in Pytorch libary. ResNet models is arranged in a series of convolutional layers in very deep network architecture. The layers are in form of residual blocks, which allow gradient flow in very deep networks using skip connections as shown in fig. These connections help preventing the problem of vanishing gradients which are very pervasive in very deep convolutional networks. In the last layer of the Resnet, we use the Global Average Pooling layer instead of fully connected layers to reduce the number of parameters created by fully-connected layers to zero. Hence, we can avoid over-fitting (which is a common problem of deep network architecture as Resnet). More details on Resnet models [here](https://pytorch.org/hub/pytorch_vision_resnet/) and Global Max Pooling [here](https://www.machinecurve.com/index.php/2020/01/30/what-are-max-pooling-average-pooling-global-max-pooling-and-global-average-pooling/)
 
  ![Alt text](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection/blob/main/Images/deep%20network.png)
+ <div align="center">Fig 3: Deep neural network architecture. Our model includes Resnet, Global Max Pooling and Activation Map.</div>
 
  ## c) Retraining Resnet 152 Model in Pytorch:
  
