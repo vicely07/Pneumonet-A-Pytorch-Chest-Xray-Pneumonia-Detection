@@ -10,7 +10,7 @@ In screening for COVID-19, patients can first be screened for flu-like symptoms 
 
  ![Alt text](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection/blob/main/Images/Fig1-Concept-idea.jpg)
  
- <div align="center">_Fig 1: Current chest X-ray diagnosis vs. novel process with PneumoScan.ai_
+ <div align="center"> _Fig 1: Current chest X-ray diagnosis vs. novel process with PneumoScan.ai_
 
 
 
@@ -18,7 +18,7 @@ In screening for COVID-19, patients can first be screened for flu-like symptoms 
 
  ![Alt text](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection/blob/main/Images/Fig2-AI-vs-Manual.png)
  
-<div align="center">_Fig 2: Chart of wait-time reduction of AI radiology tool (data from a simulation stud reported in Mauro et al., 2019)._
+<div align="center"> _Fig 2: Chart of wait-time reduction of AI radiology tool (data from a simulation stud reported in Mauro et al., 2019)._
 
 
 <div align="left">In this tutorial, we’ll show you how to use Pytorch to build a machine learning web application to classify whether a patient has Pneumonia-related disease (such as COVID-19) or no sign of any infection (Normal) from chest x-ray images. We will focus on the Pytorch component of the AI application. We only use a binary classification (Pneumonia or Normal) in this tutorial since it is a better starting point for beginners. We will discuss other additional resources for multi-classification of different diseases on chest X-ray (including COVID-19) in the section of additional resources.
