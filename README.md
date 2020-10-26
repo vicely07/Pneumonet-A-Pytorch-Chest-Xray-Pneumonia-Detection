@@ -145,7 +145,7 @@ For the project, we use the pretrained ResNet 152 provided in Pytorch libary. Re
 Before we get into the actual model building process, you can refresh your memory on the basics of deep learning using [this recommended tutorial](https://pytorch.org/tutorials/beginner/blitz/neural_networks_tutorial.html) from Pytorch.
 
 
-After refreshing your memory on the basics, we can start with this project using the COVID chest X-ray data. First, we need to initialize our model class by calling the nn.Module, which create a graph-like structure of our network. In particularly, as we mentioned earlier, the pretrained model of Resnet152 was used in our training process. This transfer learning give us a big advantage in retraining on Hence, we need to define our ResNet-152 in the init of nn.Module for transfer learning. Then after define the init function, we need to create a forward function as part of the requirement for Pytorch. 
+After refreshing your memory on the basics, we can start with this project using the COVID-19 & Pneumonia chest X-ray data. First, we need to initialize our model class by calling the nn.Module, which create a graph-like structure of our network. In particularly, as we mentioned earlier, the pretrained model of Resnet152 was used in our training process. This transfer learning give us a big advantage in retraining on Hence, we need to define our ResNet-152 in the init of nn.Module for transfer learning. Then after define the init function, we need to create a forward function as part of the requirement for Pytorch. 
 
 ```
 ##Build model
