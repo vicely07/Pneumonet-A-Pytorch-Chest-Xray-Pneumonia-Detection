@@ -49,7 +49,9 @@ In this tutorial, we’ll show you how to use Pytorch to build a machine learnin
 To build the chest X-ray detection models, we used combined 2 sources of the dataset:
 1.	The first source is the RSNA Pneumonia Detection Challenge dataset available on Kaggle contains several deidentified CXRs with 2 class labels of Pneumonia and normal.
 2.	The COVID-19 image data collection repository on GitHub is a growing collection of deidentified CXRs from COVID-19 cases internationally. The data is collected by Joseph Paul Cohen and his fellow collaborators at the University of Montreal
-Eventually, we combine the Pneumonia case and COVID case into the Pneumonia-related disease category and the rest in the normal category. our dataset consists of 2624 training data points, 16 validation data points, and 228 test data points. 
+Eventually, we combine the Pneumonia case and COVID case into the Pneumonia-related disease category and the rest in the normal category. our dataset consists of 2624 training data points, 228 validation data points, and 228 test data points (90-10-10 ratio). You can download our prepared data [here](https://drive.google.com/drive/folders/1LHWxnoQmaqFEygD1RFykqvqx1RwLjbJc?usp=sharing). 
+
+For deidentified image for blind test later, you can download this [data](https://drive.google.com/drive/folders/13YwF862htjxfe6uO-3ICeJmRMlMm3iu5?usp=sharing).
 
 ## 2. Preprocessing the data (10 minutes):
 Since the training process on imaging data of over 2300+ images will be intensive for our local computer, it is a good idea to leverage the free GPU provided by Google Colab. Colab is a good tool for beginners to use since many people may not have access to advanced computing power in hands. More details on how to set up Google Colab notebook can be found [here](https://www.analyticsvidhya.com/blog/2020/03/google-colab-machine-learning-deep-learning/).
