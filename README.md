@@ -1,6 +1,6 @@
 # PneumoNet-Building an AI COVID-19 Product from Scratch with Pytorch (Implementation Time: Under 2 hours)
 
-[![Open In Colab](https://drive.google.com/file/d/12HRGEr68eZTHcsZBcvDu6NomrrZcSvk_/view?usp=sharing)
+[![Open In Colab(https://colab.research.google.com/assets/colab-badge.svg)](https://drive.google.com/file/d/12HRGEr68eZTHcsZBcvDu6NomrrZcSvk_/view?usp=sharing)
 
 *This project won 2nd place at FB AI Hackathon*
 
