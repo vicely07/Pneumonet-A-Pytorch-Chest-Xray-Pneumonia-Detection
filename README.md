@@ -49,7 +49,9 @@ To build the chest X-ray detection models, we used combined 2 sources of dataset
 Eventually, our dataset consists of 5433 training data points, 624 validation data points and 16 test data points. All the Pneumonia and COVID-19 case is put in the 
 
 ## 2. Preprocessing the data (10 minutes):
-First, we import all the require package:
+Since the training process on imaging data of over 2300+ images will be intensive for our local computer, it is a good idea to leverage the free GPU provided by Google Colab. More details on how to setting up Google Colab notebook can be found [here](https://www.analyticsvidhya.com/blog/2020/03/google-colab-machine-learning-deep-learning/).
+
+After setting up the Colab notebook on Google free GPU, now we can get started with our project. First, we import all the require package:
 ```
 import torch
 import torchvision
@@ -118,6 +120,7 @@ out = torchvision.utils.make_grid(inputs)
 class_names = dataset["train"].classes
 imshow(out, title = [class_names[x] for x in classes])
 ```
+
 From the plot of a batch of sample images, we can see the data is loaded properly and augmented in different variations. Then, we can start our model building process.
 
 ## 3. Building the Model (45 minutes):
