@@ -127,19 +127,18 @@ From the plot of a batch of sample images, we can see the data is loaded properl
 
 In order to predict well the classes of an image, the neural network needs to be super efficient in extracting the features from the input images. Hence, the model first needs to be trained on a huge dataset to get really good at feature-extraction. However, not everyone, especially beginners in ML, access to powerful GPU or the indept knowledge to train on such big data. That is why we leverage transfer learning in our model building process, which save us  a lot of time and trouble in building an state-of-art model from scratch. Luckily for us, the torchvision module already includes several state of the art models trained on the huge dataset of Imagenet (more than 14 millions of 20,000 categories). Hence, these pretrained model is crazily good at feature extraction of thousand type of objects. 
 
+You can read more about transfer learning in imaging in this [Pytorch document](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html).
+
 ## b) Architecture of Resnet 152 with Global Average Pooling layer:
 
-For the project, we use the pretrained ResNet 152 provided in Pytorch libary. ResNet models is arranged in a series of convolutional layers in very deep network architecture. The layers are in form of residual blocks, which allow gradient flow in very deep networks using skip connections as shown in fig. These connections help preventing the problem of vanishing gradients which are very pervasive in very deep convolutional networks. In the last layer of the Resnet, we use the Global Average Pooling layer instead of fully connected layers to reduce the number of parameters created by fully-connected layers to zero. Hence, we can avoid over-fitting (which is a common problem of deep network architecture as Resnet). 
+For the project, we use the pretrained ResNet 152 provided in Pytorch libary. ResNet models is arranged in a series of convolutional layers in very deep network architecture. The layers are in form of residual blocks, which allow gradient flow in very deep networks using skip connections as shown in fig. These connections help preventing the problem of vanishing gradients which are very pervasive in very deep convolutional networks. In the last layer of the Resnet, we use the Global Average Pooling layer instead of fully connected layers to reduce the number of parameters created by fully-connected layers to zero. Hence, we can avoid over-fitting (which is a common problem of deep network architecture as Resnet). More details on Resnet models [here](https://pytorch.org/hub/pytorch_vision_resnet/).
 
  ![Alt text](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection/blob/main/Images/deep%20network.png)
 
  ## c) Retraining Resnet 152 Model in Pytorch:
  
-Before we get into the actually model building process, you can refresh you memory on the basic of deep learning using these two recommended tutorial from Pytorch.
+Before we get into the actually model building process, you can refresh you memory on the basic of deep learning using this recommended [tutorial](https://pytorch.org/tutorials/beginner/blitz/neural_networks_tutorial.html) from Pytorch.
 
-Basic Steps in Model building: https://pytorch.org/tutorials/beginner/blitz/neural_networks_tutorial.html
-
-Transfer Learning in Imaging: https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html
 
 After refreshing your memory on the basic, we can start with this project using the COVID chest X-ray data. First, we need to initalize our model class by calling the nn.Module, which create a graph-like structure of our network. In particularly, as we mentioned earlier, the pretrained model of Resnet152 was used in our training process. This transfer learning give us a big advantage in retraining on Hence, we need to define our ResNet-152 in the init of nn.Module for transfer learning. Then after define the init function, we need to create forward function as part of requirement for Pytorch. 
 
