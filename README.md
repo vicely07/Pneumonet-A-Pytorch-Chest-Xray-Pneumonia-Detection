@@ -220,6 +220,22 @@ class Model(nn.Module):
         self.model.load_state_dict(best_model_wts)
         return self.model
 ```
+After building the Model module with the pretrained Resnet 152, we can now use this model to retrain on our own training using the fit function. This function also take care of cross validation using our validating data. To make sure the model have enough time to learn the features in our chest X-ray data, we will set the epoch to 100. 
+```
+model = Model()
+model.fit(dataloaders, 100)
+```
+We then save the best weights from this model to so we can load to predict on testing data using torch.save:
+```
+torch.save(model.state_dict(), "./Best_weights/best_covid_model.pth")
+```
+When we want to load this trained weights back to the model for prediction on new data, we just need to follow these lines of code:
+```
+state_dict = torch.load("/content/drive/My Drive/FB-Ai-Hackathon/pneumonia-pytorch-localization/Best_weights/best_pnemonia_model.pth")
+model.load_state_dict(state_dict, strict=False)
+model_ft = model.model
+model_ft = model_ft.eval()
+```
 
 ## d) Building the Activation Map For Visualization:
 
