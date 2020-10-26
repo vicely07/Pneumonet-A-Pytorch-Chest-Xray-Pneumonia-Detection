@@ -10,7 +10,7 @@ In screening for COVID-19, patients can first be screened for flu-like symptoms 
 
  ![Alt text](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection/blob/main/Images/Fig1-Concept-idea.jpg)
  
- <div align="center">Fig 1: Current chest X-ray diagnosis vs. novel process with PneumoScan.ai.</div>
+ _<div align="center">Fig 1: Current chest X-ray diagnosis vs. novel process with PneumoScan.ai.</div>_
 &nbsp;
 
 A survey by the University of Michigan shows that patients usually expect the result came back after 2-3 days a chest X-ray test for Pneumonia. (Crist, 2017) However, the average wait time for the patients is 11 days (2 weeks). This long delay happens because radiologists usually need at least 20 minutes to review the X-ray while the number of images keeps stacking up after each operation day of the clinic. New research has found that an artificial intelligence (AI) radiology platform such as our CovidScan.ai can dramatically reduce the patient’s wait time significantly, cutting the average delay from 11 days to less than 3 days for abnormal radiographs with critical findings. (Mauro et al., 2019) With this wait-time reduction, patients I critical cases will receive their results faster and receive appropriate care sooner. 
