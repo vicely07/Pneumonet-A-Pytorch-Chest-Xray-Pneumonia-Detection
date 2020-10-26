@@ -67,7 +67,6 @@ import scipy.ndimage as nd #To perform preprosssing on image data
 The more data, the better the model will learn. Hence, apply some data augmentation to generate different variations of the original data to increase the sample size for training, validation and testing process. This augmentation can be performed by defining a set of transforming functions in the torchvision module. The detailed codes are as following:
 
 ```
-#Using the transforms module in the torchvision module, we define a set of functions that perform data augmentation on our dataset to obtain more data.#
 transformers = {'train_transforms' : transforms.Compose([
     transforms.Resize((224,224)),
     #transforms.CenterCrop(224),
@@ -89,7 +88,7 @@ transformers = {'train_transforms' : transforms.Compose([
     transforms.Normalize([0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
 ])}
 trans = ['train_transforms','valid_transforms','test_transforms']
-path = "/content/gdrive/My Drive/chest_xray/"
+path = "./data/"
 categories = ['train','val','test']
 ```
 After defining the transformers, now we can use torchvision.datasets.ImageFolder module we load images from our dataset directory and apply the predefined transformers on them as following:
