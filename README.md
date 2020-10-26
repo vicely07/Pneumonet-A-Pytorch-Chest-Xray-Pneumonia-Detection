@@ -1,4 +1,4 @@
-# Building an AI COVID-19 Product from Scratch with Pytorch (Implementation Time: Under 2 hours)
+# PneumoNet-Building an AI COVID-19 Product from Scratch with Pytorch (Implementation Time: Under 2 hours)
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1H8SbSmrI3jjGL_8lWy1fPSeHsuL_Lp60)
 
@@ -35,6 +35,7 @@ In this tutorial, we’ll show you how to use Pytorch to build a machine learnin
  > **[c) Retraining Resnet 152 Model in Pytorch](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection#c-retraining-resnet-152-model-in-pytorch)**
 
  > **[d) Building the Activation Map For Visualization](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection#d-building-the-activation-map-for-visualization)**
+ > **Model evaluation:**
 
 **[4. Developing the Web-app (30 minutes)](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection#4-developing-the-web-app)**
 
@@ -45,7 +46,7 @@ In this tutorial, we’ll show you how to use Pytorch to build a machine learnin
 To build the chest X-ray detection models, we used combined 2 sources of dataset:
 1.	The first source is the RSNA Pneumonia Detection Challenge dataset available on Kaggle contains several deidentified CXRs with 2 class labels of Pneumonia and normal.
 2.	The COVID-19 image data collection repository on GitHub is a growing collection of deidentified CXRs from COVID-19 cases internationally. The data is collected by Joseph Paul Cohen and his fellow collaborators at the University of Montreal
-Eventually, our dataset consists of 5433 training data points, 624 validation data points and 16 test data points. All the Pneumonia and COVID-19 case is put in the 
+Eventually, we combine Pneumonia case and COVID case into the Pneumonina-related disease category and the rest in the normal category. our dataset consists of 2624 training data points, 16 validation data points and 228 test data points. 
 
 ## 2. Preprocessing the data (10 minutes):
 Since the training process on imaging data of over 2300+ images will be intensive for our local computer, it is a good idea to leverage the free GPU provided by Google Colab. Colab is a good tool for beginners to use since many people may not have access to advanced computing power in hands. More details on how to setting up Google Colab notebook can be found [here](https://www.analyticsvidhya.com/blog/2020/03/google-colab-machine-learning-deep-learning/).
@@ -119,7 +120,7 @@ out = torchvision.utils.make_grid(inputs)
 class_names = dataset["train"].classes
 imshow(out, title = [class_names[x] for x in classes])
 ```
- ![Alt text](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection/blob/main/Images/Fig1-Concept-idea.jpg)
+ ![Alt text](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection/blob/main/Images/Augmented-data.jpg)
 
 
 From the plot of a batch of sample images, we can see the data is loaded properly and augmented in different variations. Then, we can start our model building process.
@@ -134,7 +135,7 @@ You can read more about transfer learning in imaging in this [Pytorch document](
 
 ## b) Architecture of Resnet 152 with Global Average Pooling layer:
 
-For the project, we use the pretrained ResNet 152 provided in Pytorch libary. ResNet models is arranged in a series of convolutional layers in very deep network architecture. The layers are in form of residual blocks, which allow gradient flow in very deep networks using skip connections as shown in fig. These connections help preventing the problem of vanishing gradients which are very pervasive in very deep convolutional networks. In the last layer of the Resnet, we use the Global Average Pooling layer instead of fully connected layers to reduce the number of parameters created by fully-connected layers to zero. Hence, we can avoid over-fitting (which is a common problem of deep network architecture as Resnet). More details on Resnet models [here](https://pytorch.org/hub/pytorch_vision_resnet/).
+For the project, we use the pretrained ResNet 152 provided in Pytorch libary. ResNet models is arranged in a series of convolutional layers in very deep network architecture. The layers are in form of residual blocks, which allow gradient flow in very deep networks using skip connections as shown in fig. These connections help preventing the problem of vanishing gradients which are very pervasive in very deep convolutional networks. In the last layer of the Resnet, we use the Global Average Pooling layer instead of fully connected layers to reduce the number of parameters created by fully-connected layers to zero. Hence, we can avoid over-fitting (which is a common problem of deep network architecture as Resnet). More details on Resnet models [here](https://pytorch.org/hub/pytorch_vision_resnet/) and Global Max Pooling [here](https://www.machinecurve.com/index.php/2020/01/30/what-are-max-pooling-average-pooling-global-max-pooling-and-global-average-pooling/)
 
  ![Alt text](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection/blob/main/Images/deep%20network.png)
 
@@ -239,8 +240,33 @@ model.load_state_dict(state_dict, strict=False)
 model_ft = model.model
 model_ft = model_ft.eval()
 ```
+## d) Model Evaluation:
+After training on the data, we can now test the performance of our model using the accuracy metrics. Let's see what is the accuracy of our model on the training set:
+```
+def check_accuracy(loader, model):
+    num_correct = 0
+    num_samples = 0
+    model.eval()
 
-## d) Building the Activation Map For Visualization:
+    with torch.no_grad():
+        for x, y in loader:
+            scores = model(x)
+            _, predictions = scores.max(1)
+            num_correct += (predictions == y).sum()
+            num_samples += predictions.size(0)
+        print(f'Got {num_correct} / {num_samples} with accuracy {float(num_correct)/float(num_samples)*100:.2f}') 
+    model.train()
+    
+check_accuracy(dataloaders['train'], model)
+```
+Got {num_correct} / {num_samples} with accuracy 0.92
+Let's see what is the accuracy of our model on the testing set:
+``` 
+check_accuracy(dataloaders['train'], model)
+```
+Got {num_correct} / {num_samples} with accuracy 0.87
+
+## e) Building the Activation Map For Visualization:
 
 We learnt earlier that the last layer of our network is Global Average Pooling layer. This last layer is useful for reducing the a tensor of trained weights from h x w x d to 1 x 1 x d. Then, we calculated the weighted sum from this 1 x 1 x d dimensional tensor and then fed into a softmax function to find the probabilities of the predicted class (Pneumonia or Normal). After getting the confirmed class from the model, we can map back this class to the weighted sum tensor to plot the the class activation map for visualization.
 
@@ -316,6 +342,14 @@ def predict_image(image, model_ft):
   # plt.show()
 
 predict_image(image_list[12], model_ft)
+```
+ ![Alt text](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection/blob/main/Images/Normal-output.png)
+ 
+ Let's test another image:
+```
+predict_image(image_list[1], model_ft)
+```
+ ![Alt text](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection/blob/main/Images/Pneumonia-output.png)
 ```
 
 ## 4. Developing the Web-app (30 minutes):
