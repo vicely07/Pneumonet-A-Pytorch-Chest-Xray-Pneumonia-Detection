@@ -22,7 +22,7 @@ _<div align="center">Fig 2: Chart of wait-time reduction of AI radiology tool (d
 
 In this tutorial, we’ll show you how to use Pytorch to build a machine learning web application to classify whether a patient has Pneumonia-related disease (including COVID-19) or no sign of any infection (normal) from chest x-ray images. We will focus on the Pytorch component of the AI application. We combine COVID-19 images with Pneumonia since not a big amound of COVID image made publicly avaible for open-source. That will create a huge problem with imbalance class. Therefore, to make our tutorial more disgetible and accessible for beginners, we only use a binary classification (Pneumonia or Normal) in this tutorial. At the end of this tutorial, we will discuss other additional resources for the multi-classification of different diseases on chest X-ray (including COVID-19) in the section of additional resources.
 
-**Below are the 4 main steps we’ll go over in the tutorial (We also attach the approximate time that you should spend on reading and implementing the code of each section to understand it thoroughly):**
+**Below are the outline of steps we’ll go over in this tutorial (We also attach the approximate time that you should spend on reading and implementing the code of each section to understand it thoroughly):**
 
 **[1.	Collecting Dataset (2 minutes)](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection#1collecting-the-data)**
 
