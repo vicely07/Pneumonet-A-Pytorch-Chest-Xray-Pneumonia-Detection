@@ -24,25 +24,25 @@ In this tutorial, we’ll show you how to use Pytorch to build a machine learnin
 
 **Below are the outline of steps we’ll go over in this tutorial (We also attach the approximate time that you should spend on reading and implementing the code of each section to understand it thoroughly):**
 
-**[1.	Collecting Dataset (2 minutes)](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection#1collecting-the-data)**
+**[1.	Collecting Dataset (2 minutes)](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection/blob/main/README.md#1collecting-the-data-2-minutes)**
 
-**[2. Preprocessing the Data (10 minutes)](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection#2-preprocessing-the-data)**
+**[2. Preprocessing the Data (10 minutes)](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection/blob/main/README.md#2-preprocessing-the-data-10-minutes)**
 
-**[3.	Building the Model (45 minutes)](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection#3-building-the-model)**
+**[3.	Building the Model (45 minutes)](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection/blob/main/README.md#3-building-the-model-45-minutes)**
 
- > **[a) Basics of Transfer Learning](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection#a-basics-of-transfer-learning)**
+ > **[a) Basics of Transfer Learning](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection/blob/main/README.md#a-basics-of-transfer-learning)**
 
- > **[b) Architecture of Resnet 152 with Global Average Pooling layer](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection#b-architecture-of-resnet-152-with-global-average-pooling-layer)**
+ > **[b) Architecture of Resnet 152 with Global Average Pooling layer](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection/blob/main/README.md#b-architecture-of-resnet-152-with-global-average-pooling-layer)**
 
- > **[c) Retraining Resnet 152 Model in Pytorch](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection#c-retraining-resnet-152-model-in-pytorch)**
+ > **[c) Retraining Resnet 152 Model in Pytorch](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection/blob/main/README.md#c-retraining-resnet-152-model-in-pytorch)**
 
- > **[d) Model evaluation:](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection#d-model-evaluation)**
+ > **[d) Model evaluation:](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection/blob/main/README.md#d-model-evaluation)**
 
- > **[e) Building the Activation Map For Visualization](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection#e-building-the-activation-map-for-visualization)**
+ > **[e) Building the Activation Map For Visualization](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection/blob/main/README.md#e-building-the-activation-map-for-visualization)**
 
-**[4. Developing the Web-app (30 minutes)](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection#4-developing-the-web-app)**
+**[4. Developing the Web-app (30 minutes)](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection/blob/main/README.md#4-developing-the-web-app-30-minutes)**
 
-**[5. Summary & Additional Resources (5 minutes)](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection#5-summary)**
+**[5. Summary & Additional Resources (5 minutes)](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection/blob/main/README.md#5-summary--additional-resources-5-minutes)**
 
 
 ## 1.	Collecting the Data (2 minutes):
