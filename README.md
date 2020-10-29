@@ -274,7 +274,7 @@ check_accuracy(dataloaders['train'], model)
 ```
 Got 188 / 228 with accuracy 82.46
 
-The model seems to perform well on both the training and testing set. However, we still see some slight overfitting since the training accuracy is higher than the testing accuracy (Read more about over-fitting [here](https://towardsdatascience.com/overfitting-vs-underfitting-a-complete-example-d05dd7e19765)). We can still improve this model. However, since handling overfitting is not a focus of this tutorial, we will not go details into it. You can experiment with the method suggested here and see if you can improve the performance of our model. You can read about a different way to handle overfitting [here](https://towardsdatascience.com/handling-overfitting-in-deep-learning-models-c760ee047c6e)
+The model seems to perform well on both the training and testing set. However, we still see some slight overfitting since the training accuracy is higher than the testing accuracy (Read more about over-fitting [here](https://towardsdatascience.com/overfitting-vs-underfitting-a-complete-example-d05dd7e19765)). We can still improve this model. However, since handling overfitting is not a focus of this tutorial, we will not go details into it. You can read about a different way to handle overfitting [here](https://towardsdatascience.com/handling-overfitting-in-deep-learning-models-c760ee047c6e)
 
 ## e) Building the Activation Map For Visualization:
 
