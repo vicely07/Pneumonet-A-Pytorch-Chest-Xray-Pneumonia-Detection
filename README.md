@@ -26,7 +26,7 @@ In this tutorial, we’ll show you how to use Pytorch to build a machine learnin
 
 **[1.	Collecting Dataset (2 minutes)](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection/blob/main/README.md#1collecting-the-data-2-minutes)**
 
-**[2. Preprocessing the Data (10 minutes)](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection/blob/main/README.md#2-preprocessing-the-data-10-minutes)**
+**[2. Getting Started & Preprocessing the Data (10 minutes)](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection/blob/main/README.md#2-preprocessing-the-data-10-minutes)**
 
 **[3.	Building the Model (45 minutes)](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection/blob/main/README.md#3-building-the-model-45-minutes)**
 
@@ -54,8 +54,13 @@ Eventually, we combine the Pneumonia case and COVID case into the Pneumonia-rela
 
 For deidentified image for blind test later, you can download this [data](https://drive.google.com/drive/folders/13YwF862htjxfe6uO-3ICeJmRMlMm3iu5?usp=sharing).
 
-## 2. Preprocessing the data (10 minutes):
+## 2. Getting Started and Preprocessing the Data (10 minutes):
 Since the training process on imaging data of over 2300+ images will be intensive for our local computer, it is a good idea to leverage the free GPU provided by Google Colab. Colab is a good tool for beginners to use since many people may not have access to advanced computing power in hands. More details on how to set up Google Colab notebook can be found [here](https://www.analyticsvidhya.com/blog/2020/03/google-colab-machine-learning-deep-learning/).
+
+To install the required packages, simply run this one line of code:
+```
+!pip install torch==1.0.1 torchvision==0.2.2 PIL scipy time copy
+```
 
 After setting up the Colab notebook on Google free GPU, now we can get started with our project. First, we import all the required package:
 ```
