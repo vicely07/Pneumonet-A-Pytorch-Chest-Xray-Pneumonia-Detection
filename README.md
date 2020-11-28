@@ -26,7 +26,7 @@ In this tutorial, we’ll show you how to use Pytorch to build a machine learnin
 
 **[1.	Collecting Dataset (2 minutes)](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection/blob/main/README.md#1collecting-the-data-2-minutes)**
 
-**[2. Getting Started & Preprocessing the Data (10 minutes)](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection/blob/main/README.md#2-preprocessing-the-data-10-minutes)**
+**[2. Getting Started & Preprocessing the Data (10 minutes)](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection/blob/main/README.md#2-getting-started-and-preprocessing-the-data-10-minutes)**
 
 **[3.	Building the Model (45 minutes)](https://github.com/vicely07/Pneumonet-A-Pytorch-Chest-Xray-Pneumonia-Detection/blob/main/README.md#3-building-the-model-45-minutes)**
 
